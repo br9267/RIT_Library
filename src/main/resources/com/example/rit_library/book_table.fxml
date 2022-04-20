@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rit_library.BookTable">
+   <children>
+      <Label text="Search for books" />
+      <TextField fx:id="searchBooks" onAction="#showBooks" />
+      <TableView fx:id="table" prefHeight="500.0" prefWidth="500.0">
+        <columns>
+            <TableColumn fx:id="idColumn" prefWidth="45.20001220703125" text="ID" />
+          <TableColumn fx:id="titleColumn" prefWidth="120.199951171875" text="Title" />
+          <TableColumn fx:id="authorColumn" prefWidth="95.79998779296875" text="Author" />
+            <TableColumn fx:id="ISBNColumn" prefWidth="83.4000244140625" text="ISBN" />
+            <TableColumn fx:id="genreColumn" prefWidth="65.4000244140625" text="Genre" />
+            <TableColumn fx:id="formatColumn" prefWidth="83.0" text="Format" />
+            <TableColumn fx:id="availableColumn" prefWidth="112.00006103515625" text="Availability" />
+        </columns>
+      </TableView>
+   </children>
+</VBox>
