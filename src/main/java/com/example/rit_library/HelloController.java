@@ -58,7 +58,7 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        database = new RIT_LibraryDatabase("jdbc:" + "mysql", "localhost", "3306", "RIT_Library", "root","Rktrnje2000");
+        database = RIT_LibraryDatabase.getInstance();
         database.connect();
     }
 }

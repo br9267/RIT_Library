@@ -47,17 +47,5 @@ public class Book {
         database.close();
     }
 
-/*    public void fetchP(){
-        database.connect();
-        ArrayList<ArrayList<String>> list = new ArrayList<>();
-        String sqlStatement = "SELECT * FROM equipment WHERE EquipID = ? ";
-        ArrayList<String> stringList = new ArrayList<>();
-        stringList.add(String.valueOf(this.EquipID));
-        list = db.getData(sqlStatement, stringList);
-        setEquipmentName(list.get(1).get(1));
-        setEquipmentDescription(list.get(1).get(2));
-        setEquipmentCapacity(Integer.parseInt(list.get(1).get(3)));
-        System.out.println(list);
-        database.close();
-    }*/
+
 }

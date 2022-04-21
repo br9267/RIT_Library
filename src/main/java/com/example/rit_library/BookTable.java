@@ -7,13 +7,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +35,8 @@ public class BookTable implements Initializable {
     public TableColumn<bookDatabase, Integer> availableColumn;
     public TableColumn<bookDatabase, String> idColumn;
     public TableView<bookDatabase> table;
+    public Button addButton;
+    public Button addUserButton;
     private RIT_LibraryDatabase database;
     public ObservableList<bookDatabase> tableList = FXCollections.observableArrayList();
     public void showBooks(ActionEvent actionEvent) {
@@ -83,7 +89,48 @@ public class BookTable implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        database = new RIT_LibraryDatabase("jdbc:" + "mysql", "localhost", "3306", "RIT_Library", "root","Rktrnje2000");
+        database = RIT_LibraryDatabase.getInstance();
         database.connect();
+
+    }
+    public void loadWindow(String loc, String title){
+        Parent parent = null;
+        try {
+            parent = FXMLLoader.load(getClass().getResource(loc));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setTitle(title);
+        stage.setScene(new Scene(parent));
+        stage.show();
+    }
+    public void loadAdd(ActionEvent actionEvent) {
+        loadWindow("hello-view.fxml","Add Books");
+    }
+
+    public void loadUser(ActionEvent actionEvent) {
+        loadWindow("addUser.fxml","Add User");
+    }
+
+    public void getRowItem(MouseEvent mouseEvent) {
+        bookDatabase list1 = table.getSelectionModel().getSelectedItem();
+        if(list1 != null){
+            Parent parent = null;
+            FXMLLoader loader = new FXMLLoader();
+            try {
+                loader.setLocation(getClass().getResource("selectedBook.fxml"));
+                 parent = loader.load();
+                SelectedBook book = loader.getController();
+                book.setBook(list1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setTitle("See more details about the selected book");
+
+            stage.setScene(new Scene(parent));
+            stage.show();
+        }
     }
 }

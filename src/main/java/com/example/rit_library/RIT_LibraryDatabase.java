@@ -39,7 +39,7 @@ public class RIT_LibraryDatabase {
     }
     public static RIT_LibraryDatabase getInstance(){
         if(RITdatabase == null){
-            RITdatabase = new RIT_LibraryDatabase();
+            RITdatabase = new RIT_LibraryDatabase("jdbc:" + "mysql", "localhost", "3306", "RIT_Library", "root","ritcroatia");
         }
         return RITdatabase;
     }
@@ -196,5 +196,27 @@ public class RIT_LibraryDatabase {
             }
         }
         return results;
+    }
+    public ArrayList<ArrayList<String>> getAllData(String sqlStatement){
+        ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+        ArrayList<String> table = new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = connection.prepareStatement(sqlStatement);
+            rs = stmt.executeQuery();
+            ResultSetMetaData  rsmd = rs.getMetaData();
+            while (rs.next()) {
+                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+                    table.add(rs.getString(i));
+                }
+                data.add(table);
+                table = new ArrayList<String>();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return data;
     }
 }
