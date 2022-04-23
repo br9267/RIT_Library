@@ -29,6 +29,9 @@ public class Book {
         this.database = database;
     }
 
+    public Book(String id) {
+    }
+
     public void postP() {
         database.connect();
         String sqlStatement = "INSERT INTO book(book_id,book_publisher_id,book_course_id,book_description,book_isbn,book_published_year,book_title,book_genre,format_id,book_state) VALUES (?,?,?,?,?,?,?,?,?,?)";

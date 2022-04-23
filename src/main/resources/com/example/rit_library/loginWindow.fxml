@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rit_library.LoginWindow">
+   <children>
+      <Label layoutX="162.0" layoutY="55.0" prefHeight="18.0" prefWidth="127.0" text="Username" />
+      <TextField fx:id="usernameField" layoutX="162.0" layoutY="81.0" />
+      <Label layoutX="162.0" layoutY="141.0" prefHeight="18.0" prefWidth="127.0" text="Password" />
+      <TextField fx:id="passwordField" layoutX="162.0" layoutY="167.0" />
+      <Button fx:id="loginButton" layoutX="162.0" layoutY="229.0" mnemonicParsing="false" onAction="#loginAuthenticate" text="Log-in" />
+      <Button fx:id="signupButton" layoutX="274.0" layoutY="229.0" mnemonicParsing="false" onAction="#signUp" text="Sign up" />
+   </children>
+</AnchorPane>
