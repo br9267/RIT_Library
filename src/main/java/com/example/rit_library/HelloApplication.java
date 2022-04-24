@@ -9,9 +9,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
+
+
+
+    public static Stage stage;
+    public static UserLogin loggedUser = null;
     @Override
     public void start(Stage stage) throws IOException {
-        Parent fxmlLoader = FXMLLoader.load(getClass().getResource("book_table.fxml"));
+        this.stage = stage;
+        Parent fxmlLoader = FXMLLoader.load(getClass().getResource("loginWindow.fxml"));
         Scene scene = new Scene(fxmlLoader, 600, 600);
         stage.setScene(scene);
         stage.show();

@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rit_library.SelectedBook">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rit_library.SelectedBook">
    <children>
       <Label layoutX="29.0" layoutY="29.0" prefHeight="18.0" prefWidth="183.0" text="Title" />
       <Label layoutX="28.0" layoutY="75.0" prefHeight="18.0" prefWidth="172.0" text="Author" />
@@ -18,8 +18,8 @@
       <Label layoutX="21.0" layoutY="94.0" prefHeight="18.0" prefWidth="172.0" text="Publisher" />
       <Label layoutX="28.0" layoutY="56.0" prefHeight="18.0" prefWidth="172.0" text="Course" />
       <Label layoutX="28.0" layoutY="263.0" prefHeight="18.0" prefWidth="172.0" text="Feedback" />
-      <Button layoutX="316.0" layoutY="324.0" mnemonicParsing="false" text="Borrow " />
-      <Button layoutX="404.0" layoutY="324.0" mnemonicParsing="false" text="Review" />
+      <Button fx:id="borrowButton" layoutX="316.0" layoutY="324.0" mnemonicParsing="false" onAction="#borrowBook" text="Borrow " />
+      <Button fx:id="reviewButton" layoutX="404.0" layoutY="324.0" mnemonicParsing="false" onAction="#reviewBook" text="Review" />
       <Button fx:id="favoriteButton" layoutX="477.0" layoutY="324.0" mnemonicParsing="false" onAction="#addToFavorites" text="Add to favorites" />
    </children>
 </AnchorPane>

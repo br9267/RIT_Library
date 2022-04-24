@@ -25,12 +25,12 @@ VALUES ("Borninjo0001","Admin","br9267@rit.edu"),("Krstonjo0002","User","fh8641@
 DROP TABLE IF EXISTS Login_credentials;
 CREATE TABLE Login_credentials(
 user_id VARCHAR(20) PRIMARY KEY NOT NULL,
-password VARCHAR(30) NOT NULL,
+password VARCHAR(100) NOT NULL,
 CONSTRAINT FK_loginUser FOREIGN KEY (user_id) REFERENCES User(user_id)
 
 );
 INSERT INTO Login_credentials
-VALUES ("Borninjo0001", "iLikeTrains123"),("Krstonjo0002", "politikaJeK*rva");
+VALUES ("Borninjo0001", "9f505621a2a40c0ee8d60202d868021c"),("Krstonjo0002", "8fc647403c480471011a2e9a687d2b07");
 DROP TABLE IF EXISTS Student;
 CREATE TABLE Student(
 user_id VARCHAR(30) PRIMARY KEY NOT NULL,

@@ -4,18 +4,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 
 public class LoginWindow implements Initializable {
     public TextField usernameField;
-    public TextField passwordField;
+    public PasswordField passwordField;
     public Button signupButton;
     public Button loginButton;
     public int checker = 0;
-    public void loginAuthenticate(ActionEvent actionEvent) {
+    public void loginAuthenticate(ActionEvent actionEvent) throws IOException, NoSuchAlgorithmException {
         String username = usernameField.getText();
         String password = passwordField.getText();
         if(username.isEmpty() || password.isEmpty()){
@@ -25,12 +28,12 @@ public class LoginWindow implements Initializable {
         else{
             UserLogin user = new UserLogin();
             System.out.println(user.login(username, password));
-
-
+            HelloApplication.loggedUser = user;
         }
     }
 
-    public void signUp(ActionEvent actionEvent) {
+    public void signUp(ActionEvent actionEvent) throws IOException {
+        Utils.changeScene("signUpUser.fxml");
     }
 
     @Override

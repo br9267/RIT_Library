@@ -1,6 +1,14 @@
 package com.example.rit_library;
 
+import javafx.scene.control.Alert;
+
+import java.io.IOException;
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.concurrent.SynchronousQueue;
 
 public class UserLogin {
     public String username;
@@ -9,6 +17,9 @@ public class UserLogin {
     public UserLogin() {
         database = RIT_LibraryDatabase.getInstance();
     }
+
+
+
     public UserLogin(String username, String password){
         this.username = username;
         this.password = password;
@@ -31,35 +42,54 @@ public class UserLogin {
         this.password = password;
     }
 
-    public boolean authenticate(String id, String password){
+    public boolean authenticate(String id, String password) throws NoSuchAlgorithmException, IOException {
         database.connect();
         ArrayList<String> login = new ArrayList<String>();
         String sqlStatement = "SELECT * FROM Login_credentials WHERE user_id = ?;";
         login.add(id);
         ArrayList<ArrayList<String>> login_credentials= database.getData(sqlStatement, login);
-        if(login_credentials.get(1).get(0).equals(id) && login_credentials.get(1).get(1).equals(password)){
-            System.out.println("here12121");
+
+
+        if(login_credentials.get(1).isEmpty())
+            return false;
+        String realPassword = login_credentials.get(1).get(1);
+        String comparisonPassword = Utils.generateHash(password);
+
+        if(realPassword.equals(comparisonPassword)){
             this.setUsername(id);
             this.setPassword(password);
-            database.close();
+            BookTable book = new BookTable();
+            book.getUserData(new User(this.username));
+            Utils.changeScene("book_table.fxml");
             return true;
         }
         else{
-            database.close();
-            System.out.println("here1]2");
+            Alert alert = new Alert(Alert.AlertType.WARNING,"Your username/password is wrong");
+            alert.showAndWait();
             return false;
         }
     }
-    public boolean login(String id, String password){
+
+
+
+    public void createLoginInfo() throws NoSuchAlgorithmException {
         database.connect();
+        String sqlStatement = "INSERT INTO login_credentials (user_id, password) VALUES (?,?)";
+        ArrayList<String> list = new ArrayList<>();
+        list.add(getUsername());
+        list.add(Utils.generateHash(getPassword()));
+        database.setData(sqlStatement, list);
+    }
+
+    public boolean login(String id, String password) throws IOException, NoSuchAlgorithmException {
+       // HelloApplication.changeScene("book_table.fxml");
+
         if(authenticate(id, password)){
-            System.out.println("here11111111");
-            database.close();
             return true;
         }
         else{
-            database.close();
-            System.out.println("4242423423");
+
+
             return false;
         }
     }

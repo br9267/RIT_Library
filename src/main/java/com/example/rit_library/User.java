@@ -6,8 +6,15 @@ public class User {
     public String id;
     public String role;
     public String email;
+
     public RIT_LibraryDatabase database;
     public User() {
+        database = RIT_LibraryDatabase.getInstance();
+        database.connect();
+    }
+
+    public User(String id) {
+        this.id = id;
         database = RIT_LibraryDatabase.getInstance();
         database.connect();
     }
@@ -51,6 +58,7 @@ public class User {
         list.add(getRole());
         list.add(getEmail());
         database.setData(sqlStatement, list);
-        database.close();
+
     }
+
 }

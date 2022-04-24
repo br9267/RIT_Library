@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rit_library.LoginWindow">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rit_library.LoginWindow">
    <children>
-      <Label layoutX="162.0" layoutY="55.0" prefHeight="18.0" prefWidth="127.0" text="Username" />
-      <TextField fx:id="usernameField" layoutX="162.0" layoutY="81.0" />
-      <Label layoutX="162.0" layoutY="141.0" prefHeight="18.0" prefWidth="127.0" text="Password" />
-      <TextField fx:id="passwordField" layoutX="162.0" layoutY="167.0" />
-      <Button fx:id="loginButton" layoutX="162.0" layoutY="229.0" mnemonicParsing="false" onAction="#loginAuthenticate" text="Log-in" />
-      <Button fx:id="signupButton" layoutX="274.0" layoutY="229.0" mnemonicParsing="false" onAction="#signUp" text="Sign up" />
+      <Label layoutX="216.0" layoutY="57.0" prefHeight="18.0" prefWidth="127.0" text="Username" />
+      <TextField fx:id="usernameField" layoutX="216.0" layoutY="83.0" />
+      <Label layoutX="216.0" layoutY="143.0" prefHeight="18.0" prefWidth="127.0" text="Password" />
+      <PasswordField fx:id="passwordField" layoutX="216.0" layoutY="177.0" />
+      <Button fx:id="loginButton" layoutX="216.0" layoutY="231.0" mnemonicParsing="false" onAction="#loginAuthenticate" text="Log-in" />
+      <Button fx:id="signupButton" layoutX="328.0" layoutY="231.0" mnemonicParsing="false" onAction="#signUp" text="Sign up" />
    </children>
 </AnchorPane>

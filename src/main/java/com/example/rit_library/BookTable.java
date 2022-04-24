@@ -38,6 +38,7 @@ public class BookTable implements Initializable {
     public Button addButton;
     public Button addUserButton;
     private RIT_LibraryDatabase database;
+    private User user;
     public ObservableList<bookDatabase> tableList = FXCollections.observableArrayList();
     public void showBooks(ActionEvent actionEvent) {
         table.getItems().clear();
@@ -123,6 +124,7 @@ public class BookTable implements Initializable {
                  parent = loader.load();
                 SelectedBook book = loader.getController();
                 book.setBook(list1);
+                book.setUser(user);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -132,5 +134,8 @@ public class BookTable implements Initializable {
             stage.setScene(new Scene(parent));
             stage.show();
         }
+    }
+    public void getUserData(User user){
+        this.user = user;
     }
 }

@@ -39,7 +39,7 @@ public class RIT_LibraryDatabase {
     }
     public static RIT_LibraryDatabase getInstance(){
         if(RITdatabase == null){
-            RITdatabase = new RIT_LibraryDatabase("jdbc:" + "mysql", "localhost", "3306", "RIT_Library", "root","Rktrnje2000");
+            RITdatabase = new RIT_LibraryDatabase("jdbc:" + "mysql", "localhost", "3306", "RIT_Library", "root","ritcroatia");
         }
         return RITdatabase;
     }
@@ -154,7 +154,6 @@ public class RIT_LibraryDatabase {
             if (execute > 0){
                 return true;
             }
-
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return false;
