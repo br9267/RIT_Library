@@ -1,5 +1,8 @@
 package com.example.rit_library;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 
 import java.io.IOException;
@@ -47,7 +50,7 @@ public class UserLogin {
         ArrayList<String> login = new ArrayList<String>();
         String sqlStatement = "SELECT * FROM Login_credentials WHERE user_id = ?;";
         login.add(id);
-        ArrayList<ArrayList<String>> login_credentials= database.getData(sqlStatement, login);
+        ArrayList<ArrayList<String>> login_credentials= database.getData(sqlStatement, login, true);
 
 
         if(login_credentials.get(1).isEmpty())
@@ -58,8 +61,8 @@ public class UserLogin {
         if(realPassword.equals(comparisonPassword)){
             this.setUsername(id);
             this.setPassword(password);
-            BookTable book = new BookTable();
-            book.getUserData(new User(this.username));
+            CurrentUser user = CurrentUser.getInstance();
+            user.setUser(new User(getUsername()));
             Utils.changeScene("book_table.fxml");
             return true;
         }
@@ -93,4 +96,5 @@ public class UserLogin {
             return false;
         }
     }
+
 }

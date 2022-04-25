@@ -7,7 +7,7 @@ public class bookDatabase {
     public Integer ISBN;
     public String genre;
     public String format;
-    public Integer availability;
+    public boolean availability;
 
     public String getId() {
         return id;
@@ -57,12 +57,17 @@ public class bookDatabase {
         this.format = format;
     }
 
-    public int getAvailability() {
+    public boolean getAvailability() {
         return availability;
     }
 
     public void setAvailability(Integer availability) {
-        this.availability = availability;
+        if(availability == 1){
+            this.availability = true;
+        }
+        else{
+            this.availability = false;
+        }
     }
 
     @Override
@@ -85,6 +90,12 @@ public class bookDatabase {
         this.ISBN = ISBN;
         this.genre = genre;
         this.format = format;
-        this.availability = availability;
+        if(availability == 1){
+            this.availability = true;
+        }
+        else{
+            this.availability = false;
+        }
+
     }
 }

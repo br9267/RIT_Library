@@ -117,7 +117,7 @@ public class RIT_LibraryDatabase {
         }
         return stmt;
     }
-    public ArrayList<ArrayList<String>> getData(String sqlStatement, ArrayList<String> list) {
+    public ArrayList<ArrayList<String>> getData(String sqlStatement, ArrayList<String> list, boolean value) {
         ArrayList<String> columnNames = new ArrayList<>();
         ArrayList<String> table = new ArrayList<>();
         ArrayList<ArrayList<String>> array = new ArrayList<>();
@@ -127,12 +127,14 @@ public class RIT_LibraryDatabase {
             if (rs == null){
                 return null;
             }
-            ResultSetMetaData rsmd = rs.getMetaData();
-            for(int i = 1; i<=rsmd.getColumnCount();i++){
-                columnNames.add(rsmd.getColumnName(i));
-            }
-            array.add(columnNames);
 
+                ResultSetMetaData rsmd = rs.getMetaData();
+            if(value) {
+                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+                    columnNames.add(rsmd.getColumnName(i));
+                }
+                array.add(columnNames);
+            }
             while (rs.next()) {
                 for (int i = 1; i <= rsmd.getColumnCount(); i++) {
                     table.add(rs.getString(i));
@@ -162,10 +164,9 @@ public class RIT_LibraryDatabase {
     }
 
     public ArrayList<ArrayList<String>> getBookData(){
-        String sqlStatement = "SELECT book.book_id,book.book_title, CONCAT(author.author_first_name,' ',author.author_last_name) ,book.book_isbn, genre.genre_name, book.format_id, book_on_loan.book_returned\n" +
+        String sqlStatement = "SELECT book.book_id,book.book_title, CONCAT(author.author_first_name,' ',author.author_last_name) ,book.book_isbn, genre.genre_name, book.format_id, book.book_available\n" +
                 "FROM book\n" +
                 "INNER JOIN genre ON book.book_genre_id = genre.genre_id\n" +
-                "INNER JOIN book_on_loan ON book.book_id = book_on_loan.book_id\n" +
                 "INNER JOIN author_book ON book.book_id = author_book.book_id\n" +
                 "INNER JOIN author ON author_book.author_id = author.author_id;";
         ArrayList<ArrayList<String>> results = new ArrayList<ArrayList<String>>();

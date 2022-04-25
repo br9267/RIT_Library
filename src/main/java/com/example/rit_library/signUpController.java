@@ -87,7 +87,9 @@ public class signUpController implements Initializable {
                 user.createUser();
                 UserLogin userLogin = new UserLogin(id,pass);
                 userLogin.createLoginInfo();
-                Utils.changeScene("loginWindow.fxml");
+                CurrentUser userCurrent = CurrentUser.getInstance();
+                userCurrent.setUser(new User(id));
+                Utils.changeScene("book_table.fxml");
             }
         }
     }

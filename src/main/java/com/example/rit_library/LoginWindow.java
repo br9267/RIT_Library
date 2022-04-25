@@ -33,7 +33,7 @@ public class LoginWindow implements Initializable {
     }
 
     public void signUp(ActionEvent actionEvent) throws IOException {
-        Utils.changeScene("signUpUser.fxml");
+        Utils.changeScene("sig`nUpUser.fxml");
     }
 
     @Override

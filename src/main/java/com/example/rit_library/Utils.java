@@ -14,7 +14,6 @@ public class Utils {
     public static void changeScene(String sceneName) throws IOException {
         Parent fxmlLoader = FXMLLoader.load(HelloApplication.class.getResource(sceneName));
         Scene scene = new Scene(fxmlLoader, 600, 600);
-
         HelloApplication.stage.setScene(scene);
         HelloApplication.stage.show();
     }
