@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rit_library.LookFavorites">
+   <children>
+      <TableView fx:id="TableViewFavorite"  prefHeight="331.0" prefWidth="602.0">
+        <columns>
+          <TableColumn fx:id="titleColumn" prefWidth="163.80000913143158" text="Title" />
+            <TableColumn fx:id="ISBNColumn" prefWidth="133.20001220703125" text="ISBN" />
+            <TableColumn fx:id="CourseColumn" prefWidth="137.79998779296875" text="Course" />
+            <TableColumn fx:id="PublisherColumn" prefWidth="169.39999389648438" text="Publisher" />
+        </columns>
+      </TableView>
+      <Button fx:id="removeButton" layoutX="158.0" layoutY="360.0" mnemonicParsing="false" onAction="#removeFavorite" text="Remove from Favorites" />
+      <Button fx:id="cancelButton" layoutX="359.0" layoutY="360.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+   </children>
+</AnchorPane>

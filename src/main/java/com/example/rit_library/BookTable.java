@@ -37,6 +37,8 @@ public class BookTable implements Initializable {
     public TableView<bookDatabase> table;
     public Button addButton;
     public Button addUserButton;
+    public Button favoritesBUtton;
+    public Button returnButton;
     private RIT_LibraryDatabase database;
     private User user;
     public ObservableList<bookDatabase> tableList = FXCollections.observableArrayList();
@@ -135,4 +137,26 @@ public class BookTable implements Initializable {
         }
     }
 
+    public void returnBook(ActionEvent actionEvent) {
+
+    }
+
+    public void openFavorites(ActionEvent actionEvent) {
+
+        Parent parent = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("LookFavorites.fxml"));
+            parent = loader.load();
+            LookFavorites controller = loader.getController();
+            Favorites favorite = new Favorites();
+            controller.setFavorites(favorite);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setTitle("See more details about the selected book");
+
+        stage.setScene(new Scene(parent));
+        stage.show();
+    }
 }

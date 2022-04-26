@@ -36,7 +36,7 @@ public class AddUser implements Initializable {
         String sqlStatement = "SELECT * FROM Role;";
         ArrayList<ArrayList<String>> list = database.getAllData(sqlStatement);
         for(ArrayList<String> object : list){
-            comboFill.add(object.get(1));
+            comboFill.add(object.get(0));
         }
         comboRole.setItems(comboFill);
     }

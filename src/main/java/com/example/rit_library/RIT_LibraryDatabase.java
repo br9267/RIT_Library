@@ -39,7 +39,7 @@ public class RIT_LibraryDatabase {
     }
     public static RIT_LibraryDatabase getInstance(){
         if(RITdatabase == null){
-            RITdatabase = new RIT_LibraryDatabase("jdbc:" + "mysql", "localhost", "3306", "RIT_Library", "root","ritcroatia");
+            RITdatabase = new RIT_LibraryDatabase("jdbc:" + "mysql", "localhost", "3306", "RIT_Library", "root","Rktrnje2000");
         }
         return RITdatabase;
     }
@@ -152,6 +152,7 @@ public class RIT_LibraryDatabase {
     public boolean setData(String sqlStatement,ArrayList<String> list) {
         try {
             PreparedStatement stmt = prepare(sqlStatement, list);
+            System.out.println(stmt);
             int execute = stmt.executeUpdate();
             if (execute > 0){
                 return true;
@@ -219,4 +220,39 @@ public class RIT_LibraryDatabase {
 
         return data;
     }
+
+    public ArrayList<ArrayList<String>> getAllData(String sqlStatement, ArrayList<String> list, boolean value) {
+        ArrayList<String> columnNames = new ArrayList<>();
+        ArrayList<String> table = new ArrayList<>();
+        ArrayList<ArrayList<String>> array = new ArrayList<>();
+        try {
+            this.connect();
+            ResultSet rs = prepare(sqlStatement, list).executeQuery();
+            if (rs == null){
+                return null;
+            }
+
+            ResultSetMetaData rsmd = rs.getMetaData();
+            if(value) {
+                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+                    columnNames.add(rsmd.getColumnName(i));
+                }
+                array.add(columnNames);
+            }
+            while (rs.next()) {
+                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+                    table.add(rs.getString(i));
+                }
+                array.add(table);
+                table = new ArrayList<String>();
+            }
+
+
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        }
+
+        return array;
+    }
+
 }

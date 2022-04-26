@@ -28,6 +28,12 @@ public class Favorites {
         database.connect();
     }
 
+    public Favorites(String user_id) {
+        this.user_id = user_id;
+        database = RIT_LibraryDatabase.getInstance();
+        database.connect();
+    }
+
     public String getBook_id() {
         return book_id;
     }
@@ -64,5 +70,21 @@ public class Favorites {
         list.add(getBook_id());
         list.add(getUser_id());
         database.setData(sqlStatement, list);
+    }
+
+    public ArrayList<ArrayList<String>> getAllFavorites() {
+        String sqlStatement = "SELECT * FROM favorites WHERE user_id = ?";
+        ArrayList<String> list = new ArrayList<String>();
+        list.add(getUser_id());
+        ArrayList<ArrayList<String>> array = database.getAllData(sqlStatement,list,false);
+        return array;
+    }
+
+    public void removeFavorites(){
+        String sqlStatement = "DELETE FROM favorites WHERE user_id = ? AND book_id = ?;";
+        ArrayList<String> list = new ArrayList<String>();
+        list.add(getUser_id());
+        list.add(getBook_id());
+        database.setData(sqlStatement,list);
     }
 }

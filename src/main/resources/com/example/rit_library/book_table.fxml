@@ -13,7 +13,7 @@
       </HBox>
       <Label text="Search for books" />
       <TextField fx:id="searchBooks" onAction="#showBooks" />
-      <TableView fx:id="table" maxWidth="800.0" onMouseClicked="#getRowItem" prefHeight="700.0" prefWidth="500.0">
+      <TableView fx:id="table" maxWidth="800.0" onMouseClicked="#getRowItem" prefHeight="285.0" prefWidth="600.0">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="45.20001220703125" text="ID" />
           <TableColumn fx:id="titleColumn" prefWidth="120.199951171875" text="Title" />
@@ -24,5 +24,7 @@
             <TableColumn fx:id="availableColumn" prefWidth="112.00006103515625" text="Availability" />
         </columns>
       </TableView>
+      <Button fx:id="returnButton" mnemonicParsing="false" onAction="#returnBook" text="Return Book" />
+      <Button fx:id="favoritesBUtton" layoutX="10.0" layoutY="439.0" mnemonicParsing="false" onAction="#openFavorites" text="Open Favorites" />
    </children>
 </VBox>
