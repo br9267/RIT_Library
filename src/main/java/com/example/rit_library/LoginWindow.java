@@ -27,13 +27,12 @@ public class LoginWindow implements Initializable {
         }
         else{
             UserLogin user = new UserLogin();
-            System.out.println(user.login(username, password));
-            HelloApplication.loggedUser = user;
+            user.login(username, password);
         }
     }
 
     public void signUp(ActionEvent actionEvent) throws IOException {
-        Utils.changeScene("sig`nUpUser.fxml");
+        Utils.changeScene("signUpUser.fxml");
     }
 
     @Override

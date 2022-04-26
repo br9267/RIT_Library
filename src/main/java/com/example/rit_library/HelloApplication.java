@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
 
 
     public static Stage stage;
-    public static UserLogin loggedUser = null;
+
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;

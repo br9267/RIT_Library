@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rit_library.ReviewBook">
+   <children>
+      <Label layoutX="31.0" layoutY="74.0" text="Please grade the book:" />
+      <ComboBox fx:id="gradeBook" layoutX="171.0" layoutY="70.0" prefHeight="25.0" prefWidth="100.0" />
+      <Label layoutX="31.0" layoutY="138.0" text="Your feedback:" />
+      <TextArea fx:id="feedbackArea" layoutX="31.0" layoutY="161.0" prefHeight="87.0" prefWidth="245.0" />
+      <Label layoutX="37.0" layoutY="275.0" text="Would you recommend this book?" />
+      <ComboBox fx:id="recommendationBook" layoutX="63.0" layoutY="304.0" prefWidth="150.0" />
+      <Button fx:id="reviewButton" layoutX="58.0" layoutY="355.0" mnemonicParsing="false" onAction="#reviewBook" text="Review" />
+      <Button fx:id="cancelButton" layoutX="187.0" layoutY="355.0" mnemonicParsing="false" onAction="#cancelReview" text="Cancel" />
+   </children>
+</AnchorPane>

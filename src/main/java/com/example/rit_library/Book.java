@@ -134,7 +134,7 @@ public class Book {
         list.add(this.genre);
         list.add(this.format);
         list.add(this.state);
-        System.out.println(database.setData(sqlStatement,list));
+       database.setData(sqlStatement,list);
         database.close();
     }
     public void updateWhenBorrow(){
