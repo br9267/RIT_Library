@@ -115,6 +115,51 @@ public class BookTable implements Initializable {
     public void loadUser(ActionEvent actionEvent) {
         loadWindow("addUser.fxml","Add User");
     }
+    @FXML
+    void addCourse(ActionEvent event) {
+        loadWindow("addCourse.fxml", "Add Course");
+    }
+    @FXML
+    void addGenre(ActionEvent event) {
+        loadWindow("addGenre.fxml", "Add Genre");
+    }
+    @FXML
+    void addPublisher(ActionEvent event) {
+        loadWindow("addPublisher.fxml", "Add Publisher");
+    }
+
+    @FXML
+    void deleteBook(ActionEvent event) {
+        database.connect();
+        bookDatabase selectedItem = table.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING,"Please choose a book to delete");
+            alert.showAndWait();
+        } else {
+            ArrayList<String> list = new ArrayList<>();
+            list.add(selectedItem.getId());
+            String deleteFromAuthorBook = "DELETE FROM author_book WHERE book_id = ?";
+            database.setData(deleteFromAuthorBook, list);
+            String deleteFromBookOnLoan = "DELETE FROM book_on_loan WHERE book_id = ?";
+            database.setData(deleteFromBookOnLoan,list);
+            String deleteFromFavorites = "DELETE FROM favorites WHERE book_id = ?";
+            database.setData(deleteFromFavorites,list);
+            String deleteReviews = "DELETE FROM review WHERE book_id=?";
+            database.setData(deleteReviews,list);
+            String deleteBook = "DELETE FROM book WHERE book_id=?";
+            database.setData(deleteBook, list);
+            ObservableList<bookDatabase> newBooks = FXCollections.observableList(new ArrayList<>());
+            ObservableList<bookDatabase> oldBooks = table.getItems();
+            for (bookDatabase b: oldBooks) {
+                if(b.getId().equals(selectedItem.getId()))
+                {
+                    continue;
+                }
+                newBooks.add(b);
+            }
+            table.setItems(newBooks);
+        }
+    }
 
     public void getRowItem(MouseEvent mouseEvent) {
         bookDatabase list1 = table.getSelectionModel().getSelectedItem();

@@ -122,7 +122,7 @@ public class Book {
 
     public void postP() {
         database.connect();
-        String sqlStatement = "INSERT INTO book(book_id,book_publisher_id,book_course_id,book_description,book_isbn,book_published_year,book_title,book_genre,format_id,book_state) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        String sqlStatement = "INSERT INTO book(book_id,publisher_name,course_name,book_description,book_isbn,book_published_year,book_title,book_genre_id,format_id,book_state) VALUES (?,?,?,?,?,?,?,?,?,?)";
         ArrayList<String> list = new ArrayList<>();
         list.add(String.valueOf(this.book_id));
         list.add(this.publisher);

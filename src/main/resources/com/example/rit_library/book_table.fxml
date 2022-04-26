@@ -9,6 +9,10 @@
          <children>
             <Button fx:id="addButton" mnemonicParsing="false" onAction="#loadAdd" text="AddBooks" />
             <Button fx:id="addUserButton" mnemonicParsing="false" onAction="#loadUser" text="Add User" />
+             <Button fx:id="addPublisher" mnemonicParsing="false" onAction="#addPublisher" text="Add Publisher" />
+             <Button fx:id="addGenre" mnemonicParsing="false" onAction="#addGenre" text="Add Genre" />
+             <Button fx:id="addCourse" mnemonicParsing="false" onAction="#addCourse" text="Add Course" />
+             <Button mnemonicParsing="false" onAction="#deleteBook" text="Delete book" />
          </children>
       </HBox>
       <Label text="Search for books" />

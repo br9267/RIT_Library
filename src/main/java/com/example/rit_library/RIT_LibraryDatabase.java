@@ -165,7 +165,7 @@ public class RIT_LibraryDatabase {
     }
 
     public ArrayList<ArrayList<String>> getBookData(){
-        String sqlStatement = "SELECT book.book_id,book.book_title, CONCAT(author.author_first_name,' ',author.author_last_name) ,book.book_isbn, genre.genre_name, book.format_id, book.book_available\n" +
+        String sqlStatement = "SELECT book.book_id,book.book_title, CONCAT(author.author_first_name,' ',author.author_last_name) ,book.book_isbn, genre.genre_id, book.format_id, book.book_available\n" +
                 "FROM book\n" +
                 "INNER JOIN genre ON book.book_genre_id = genre.genre_id\n" +
                 "INNER JOIN author_book ON book.book_id = author_book.book_id\n" +
